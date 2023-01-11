@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row align-items-center g-2">
+        <div class="col-8 image-back">
+            <!-- imagen de fondo -->
+        </div>
+        <div class="col-4">
+            <!-- Login Form-->
+            <form class="p-3" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-3">
+                  <label for="" class="form-label">Correo electronico</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder="abc@mail.com">
+                </div>
+                <div class="mb-3">
+                  <label for="" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" formControlName="password" placeholder="********">
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+            </form>
+        </div>
+    </div>
+</div>

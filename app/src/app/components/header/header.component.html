@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default navbar-fixed-top bg-light p-3 mb-4">
+    <div class="container">
+        <a class="navbar-brand" href="#">PeriferiaStore</a>
+        <div class="d-flex my-2 my-lg-0">
+            <a type="button" (click)="openNav()">
+                <div class="d-flex">
+                    <fa-icon [icon]="faCartPlus"></fa-icon>
+                    <div *ngIf="productLength !== 0" class="badge-cart">
+                        <span>{{productLength}}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</nav>
+

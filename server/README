@@ -1,0 +1,29 @@
+## Soy Yo Backend
+
+Proyeto de desarrollo test backend para la empresa soy yo, realizado con node, typescript y express.
+
+## Requirido
+
+Node JS v16.18.0
+Docker v20.10.21
+
+## Instrucciones para ejecutar
+
+# En local - instalacion
+Comando para instalar dependecias en maquina ``NPM install``
+
+# Variable de entorno
+Crear archivo ".env" con el siguiente paramentro dentro ``API_URL=https://awovcw7p76.execute-api.us-east-1.amazonaws.com/dev/entity/v2.1``
+
+# Modo desarrollador
+Para ejecutar el proyecto en modo desarrollo despues, de instalar dependencias, ejecutar ``NPM run dev``
+
+# Modo produccion
+Para hacer un build del proyecto en para produccion, despues de instalar dependencias, ejecutar ``NPM run build``
+el cual genera una carpeta "Build" en la que se encuentra en proyecto en javascript listo para desplegar.
+
+# Test
+Para ejecutar los tests del proyecto, despues de instalar dependencias, ejecutar ``NPM run dev``.
+
+# Arranque con Docker
+Para ejecutar el proyecto mediante docker se ejecuta el comando ``docker build -t co.com.soyyo.entity.filter-dev-1_0_0 .`` para crear la imagen y luego ejecutar ``docker run -d -p 5000:5000  --name server co.com.soyyo.entity.filter-dev-1_0_0`` para correr el contenedor.

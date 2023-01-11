@@ -1,0 +1,28 @@
+<div id="mySidebar" class="sidebar bg-secondary" [ngStyle]="{'width': show ? '350px' : '0'}">
+    <a type="button" class="closebtn" (click)="closeNav()">×</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 header">
+                <h1>Carrito</h1>
+                <h5>{{amount | currency}}</h5>
+            </div>
+        </div>
+        <ul class="p-0">
+            <li *ngFor="let item of productList" class="item-cart">
+                <div class="row">
+                    <div class="col-4">
+                        <img [src]="item.thumbnail" alt="" srcset="">
+                    </div>
+                    <div class="col-8">
+                        <h6 class="mt-2">{{item.title}}</h6>
+                        <p class="card-text">{{item.description}}</p>
+                        <a type="button" class="btn btn-danger" (click)="removeProduct(item)">Eliminar</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="d-flex bottom-cart">
+        <button class="btn btn-success">Finalizar comprar</button>
+    </div>
+</div>

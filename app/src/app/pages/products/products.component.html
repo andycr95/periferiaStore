@@ -1,0 +1,31 @@
+
+<div class="toast" [ngStyle]="{'display': showToast ? 'inline' : 'none'}">
+    <div class="toast-header bg-danger">
+        <strong class="mr-auto">Alerta</strong>
+    </div>
+    <div class="toast-body">
+        Has llegado al limite de tu cupo
+    </div>
+</div>
+<app-header [productLength]="selectedProducts.length"></app-header>
+<app-cart [productList]="selectedProducts" (onRemoved)="onRemovedProduct($event)" [amount]="amount"> </app-cart>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Productos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let item of products">
+            <div class="card">
+                <div class="card-body">
+                    <img [src]="item.thumbnail" alt="" srcset="">
+                    <h5 class="card-title mt-2">{{item.title}}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text">{{item.price | currency}}</p>
+                    <a type="button" class="btn btn-success" (click)="addProduct(item)">Agregar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
