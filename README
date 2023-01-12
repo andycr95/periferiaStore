@@ -10,10 +10,21 @@ Docker v20.10.21
 ## Instrucciones para ejecutar
 
 # En local - instalacion
-Comando para instalar dependecias en maquina ``./app/NPM install``
+Comando para instalar dependecias de frontend en maquina ``./app/NPM install``
+Comando para instalar dependecias de backend en maquina ``./server/NPM install``
+Inicializar base de datos ``docker run -d --rm --name postgres -e POSTGRES_PASSWORD=password -e POSTGRES_DB=periferiaStore -p 5432:5432 postgres``
+Ejecutar migraciones y seeders ``npx prisma migrate dev`` - ``npx prisma db seed``
+Crear archivo .env con DATABASE_URL="postgresql://postgres:postgres@localhost:5432/periferiaStore?schema=public"
+Ejecutar backend ``./server/NPM run dev``
+Ejecutar frontend ``./app/ng serve``
 
 # Test
 Para ejecutar los tests del proyecto realizados al backend, despues de instalar dependencias, ejecutar ``./server/NPM run test``.
+
+# Swagger
+Ejecutar backend ``./server/NPM run dev``
+Ingresar a la url ``http://localhost:5000/api-docs``
+
 
 # Arranque con Docker
 Para ejecutar el proyecto mediante docker se ejecuta el comando ``docker-compose up -d`` para crear las imagenes y luego ejecutar ``docker exec -it periferiastore-backend-1 sh -c "npx prisma migrate dev"`` y ``docker exec -it periferiastore-backend-1 sh -c "npx prisma db seed"`` para correr las migraciones y realizar los registras en base de datos.
