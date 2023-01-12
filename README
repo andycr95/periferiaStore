@@ -1,0 +1,20 @@
+## PeriferiaStore
+
+Proyeto de desarrollo test para la empresa Periferia, realizado con node, angular y postgres.
+
+## Requerido
+
+Node JS v16.18.0
+Docker v20.10.21
+
+## Instrucciones para ejecutar
+
+# En local - instalacion
+Comando para instalar dependecias en maquina ``./app/NPM install``
+
+# Test
+Para ejecutar los tests del proyecto realizados al backend, despues de instalar dependencias, ejecutar ``./server/NPM run test``.
+
+# Arranque con Docker
+Para ejecutar el proyecto mediante docker se ejecuta el comando ``docker-compose up -d`` para crear las imagenes y luego ejecutar ``docker exec -it periferiastore-backend-1 sh -c "npx prisma migrate dev"`` y ``docker exec -it periferiastore-backend-1 sh -c "npx prisma db seed"`` para correr las migraciones y realizar los registras en base de datos.
+

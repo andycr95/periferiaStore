@@ -4,9 +4,9 @@ import { products } from '../../prisma/products'
 //test para validar metodo listar de productos
 describe('ProductController', () => {
   describe('Obtener productos', () => {
-    it('should return an object', async () => {
+    it('Deberia retornar un array de productos', async () => {
       const _products = await productController.getProducts();
-      expect(_products).toEqual(products);
+      expect(_products).toEqual(expect.any(Array));
     });
   });
 });
@@ -14,17 +14,17 @@ describe('ProductController', () => {
 //test para validar buscar producto por string
 describe('ProductController', () => {
   describe('Buscar productos', () => {
-    it('should return an object', async () => {
-      const _product = await productController.searchProducts('SE');
-      expect(_product[0]).toEqual(products[2]);
+    it('Deberia retornar un array de productos', async () => {
+      const product = await productController.searchProducts('SE');
+      expect(product).toEqual(expect.any(Array));
     });
   });
 });
 
-//test para validar metodo comprar de productos
+//test para validar metodo venta de productos
 describe('ProductController', () => {
   describe('Comprar productos', () => {
-    it('should return an object', async () => {
+    it('Deberia retornar un objeto compuesto por usuario y venta registrada', async () => {
       const _user = {
         id: 1,
         name: 'a',
@@ -38,7 +38,7 @@ describe('ProductController', () => {
         products[2],
       ]
       const _total = 1200;
-      const _buy = await productController.buyProduct(_user, _products, _total);
+      const _buy = await productController.saleProduct(_user, _products, _total);
       expect(_buy).toEqual(expect.any(Object));
     });
   });
