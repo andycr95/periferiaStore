@@ -20,7 +20,7 @@ const options = {
   },
   apis: [
     `${__dirname}/routes/*.ts`,
-    "./dist/routes/*.js",
+    "./build/src/routes/*.js",
   ],
 };
 
