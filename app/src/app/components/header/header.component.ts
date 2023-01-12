@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { faCartPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { NavService } from "../../services/nav.service";
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -12,7 +12,9 @@ export class HeaderComponent implements OnInit {
 
 
   faCartPlus = faCartPlus;
+  faSearch = faSearch;
   @Input() productLength: number = 0;
+  @Output() openModal = new EventEmitter<any>();
   constructor(private navService: NavService, private productService: ProductsService) { }
 
   ngOnInit(): void {
@@ -22,4 +24,10 @@ export class HeaderComponent implements OnInit {
     this.navService.toggleSide(true);
   }
 
+
+  open() {
+    console.log('open');
+    
+    this.openModal.emit(true);
+  }
 }

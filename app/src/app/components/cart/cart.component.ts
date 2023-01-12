@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   @Input() productList: any[] = [];
   @Input() amount: number = 0;
   @Output() onRemoved = new EventEmitter<any>();
+  @Output() onSubmitSale = new EventEmitter<any>();
   constructor(private navService: NavService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,13 @@ export class CartComponent implements OnInit {
 
   closeNav() {
     this.navService.toggleSide(false);
+  }
+
+  submitSale() {
+    this.onSubmitSale.emit();
+    setTimeout(() => {
+      this.closeNav();
+    }, 1000);
   }
 
   removeProduct(product: any) {

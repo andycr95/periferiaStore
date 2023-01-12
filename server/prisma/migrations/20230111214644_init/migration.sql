@@ -23,12 +23,13 @@ CREATE TABLE "Product" (
 
 -- CreateTable
 CREATE TABLE "Sale" (
+    "id" SERIAL NOT NULL,
     "productId" INTEGER NOT NULL,
     "userId" INTEGER NOT NULL,
     "amount" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Sale_pkey" PRIMARY KEY ("productId","userId")
+    CONSTRAINT "Sale_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

@@ -1,18 +1,58 @@
 
 <div class="toast" [ngStyle]="{'display': showToast ? 'inline' : 'none'}">
-    <div class="toast-header bg-danger">
-        <strong class="mr-auto">Alerta</strong>
+    <div class="toast-header" [ngClass]="!showToastSuccess ? 'bg-danger' : 'bg-success'">
+        <strong class="mr-auto">{{!showToastSuccess ? 'Alerta' : 'Exito'}}</strong>
     </div>
     <div class="toast-body">
-        Has llegado al limite de tu cupo
+        {{message}}
     </div>
 </div>
-<app-header [productLength]="selectedProducts.length"></app-header>
-<app-cart [productList]="selectedProducts" (onRemoved)="onRemovedProduct($event)" [amount]="amount"> </app-cart>
+  
+  <div class="modal modal-xl fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <div class="mb-3">
+                <h5 class="modal-title" id="exampleModalLongTitle">Buscar producos</h5>
+                <input type="text" name="search" [(ngModel)]="search" class="form-control" (ngModelChange)="searchProducts()" aria-describedby="searchHelpId">
+                <small id="searchHelpId" class="form-text text-muted">Puedes buscar articulos por su nombre</small>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let item of productsSearched">
+                    <div class="card">
+                        <div class="card-body">
+                            <img [src]="item.thumbnail" alt="" srcset="">
+                            <h6 class="card-title mt-2">{{item.title}}</h6>
+                            <p class="card-text">{{item.description}}</p>
+                            <p class="card-text">{{item.price | currency}}</p>
+                            <a type="button" class="btn btn-success" (click)="addProduct(item)">Agregar</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div *ngIf="productsSearched.length === 0">
+                        <h1>No se encontraron resultados</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<app-header [productLength]="selectedProducts.length" (openModal)="open()"></app-header>
+<app-cart [productList]="selectedProducts" (onRemoved)="onRemovedProduct($event)" [amount]="amount" (onSubmitSale)="onSubmitSale()" > </app-cart>
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-8">
             <h1>Productos</h1>
+        </div>
+        <div class="col-4">
+            <h6 class="text-end">Cupo: {{user.limit | currency}}</h6>
         </div>
     </div>
     <div class="row">

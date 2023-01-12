@@ -18,4 +18,12 @@ export class ProductsService {
     return this.http.get(`${ base_url }/products` );
   }
 
+  searchProducts(search: string) {
+    return this.http.get(`${ base_url }/products/search?search=${search}` );
+  }
+
+  saleProduct(sale: any){
+    return this.http.post(`${ base_url }/products/sale`, sale);
+  }
+
 }

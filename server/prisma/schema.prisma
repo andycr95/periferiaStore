@@ -30,12 +30,11 @@ model Product {
 }
 
 model Sale {
+  id    Int     @id @default(autoincrement())
   product       Product     @relation(fields: [productId], references: [id])
   productId     Int
   user   User @relation(fields: [userId], references: [id])
   userId Int
   amount Int
   createdAt DateTime @default(now())
-
-  @@id([productId, userId])
 }
